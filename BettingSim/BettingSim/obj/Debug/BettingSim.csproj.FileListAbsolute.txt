@@ -1,1 +1,10 @@
 c:\users\the_p_000\documents\visual studio 2013\Projects\BettingSim\BettingSim\bin\Debug\BettingSim.exe.config
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\bin\Debug\BettingSim.exe.config
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\Debug\BettingSim.csprojResolveAssemblyReference.cache
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\Debug\BettingSim.Form1.resources
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\Debug\BettingSim.Properties.Resources.resources
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\Debug\BettingSim.csproj.GenerateResource.Cache
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\bin\Debug\BettingSim.exe
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\bin\Debug\BettingSim.pdb
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\Debug\BettingSim.exe
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\Debug\BettingSim.pdb
