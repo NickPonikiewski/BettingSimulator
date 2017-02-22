@@ -68,6 +68,9 @@
             this.Ball4numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.Ball5numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.Ball6numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.PBWin = new System.Windows.Forms.Label();
+            this.HorseWin = new System.Windows.Forms.Label();
+            this.PokerWin = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Ball1numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ball2numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ball3numericUpDown)).BeginInit();
@@ -453,11 +456,39 @@
             this.Ball6numericUpDown.Size = new System.Drawing.Size(30, 20);
             this.Ball6numericUpDown.TabIndex = 47;
             // 
+            // PBWin
+            // 
+            this.PBWin.AutoSize = true;
+            this.PBWin.Location = new System.Drawing.Point(10, 129);
+            this.PBWin.Name = "PBWin";
+            this.PBWin.Size = new System.Drawing.Size(0, 13);
+            this.PBWin.TabIndex = 48;
+            // 
+            // HorseWin
+            // 
+            this.HorseWin.AutoSize = true;
+            this.HorseWin.Location = new System.Drawing.Point(150, 246);
+            this.HorseWin.Name = "HorseWin";
+            this.HorseWin.Size = new System.Drawing.Size(0, 13);
+            this.HorseWin.TabIndex = 49;
+            // 
+            // PokerWin
+            // 
+            this.PokerWin.AutoSize = true;
+            this.PokerWin.Location = new System.Drawing.Point(358, 125);
+            this.PokerWin.Name = "PokerWin";
+            this.PokerWin.Size = new System.Drawing.Size(35, 13);
+            this.PokerWin.TabIndex = 50;
+            this.PokerWin.Text = "label3";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 323);
+            this.Controls.Add(this.PokerWin);
+            this.Controls.Add(this.HorseWin);
+            this.Controls.Add(this.PBWin);
             this.Controls.Add(this.Ball6numericUpDown);
             this.Controls.Add(this.Ball5numericUpDown);
             this.Controls.Add(this.Ball4numericUpDown);
@@ -553,6 +584,9 @@
         private System.Windows.Forms.NumericUpDown Ball4numericUpDown;
         private System.Windows.Forms.NumericUpDown Ball5numericUpDown;
         private System.Windows.Forms.NumericUpDown Ball6numericUpDown;
+        private System.Windows.Forms.Label PBWin;
+        private System.Windows.Forms.Label HorseWin;
+        private System.Windows.Forms.Label PokerWin;
     }
 }
 

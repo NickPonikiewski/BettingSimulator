@@ -23,25 +23,73 @@ namespace BettingSim
             Random random = new Random();
             int[] PlayerBalls = { (int)Ball1numericUpDown.Value, (int)Ball2numericUpDown.Value, (int)Ball3numericUpDown.Value, (int)Ball4numericUpDown.Value, (int)Ball5numericUpDown.Value, (int)Ball5numericUpDown.Value};
             int PlayerRedBall = (int)Ball6numericUpDown.Value;
-            int[] ActualBaseBalls = { 0, 1, 2, 3, 4, 5 };
+            int[] ActualBaseBalls = { random.Next(1, 70), random.Next(1, 70), random.Next(1, 70), random.Next(1, 70), random.Next(1, 70), random.Next(1, 70) };
             int ActualRedBall = random.Next(1, 27);
-            for (int i = 0; i > ActualBaseBalls.Length; i++)
-            {
-                ActualBaseBalls[i] = random.Next(1, 70);
-            }
+            int Winnings = 0;
+            
+            Ball1.Text = Convert.ToString(ActualBaseBalls[0]);
+            Ball2.Text = Convert.ToString(ActualBaseBalls[1]);
+            Ball3.Text = Convert.ToString(ActualBaseBalls[2]);
+            Ball4.Text = Convert.ToString(ActualBaseBalls[3]);
+            Ball5.Text = Convert.ToString(ActualBaseBalls[4]);
+            Ball6.Text = Convert.ToString(ActualRedBall);
+
             PowerBall Player = new PowerBall(PlayerBalls, PlayerRedBall);
             PowerBall Computer = new PowerBall(ActualBaseBalls, ActualRedBall);
             Bet<PowerBall> TryBet = new Bet<PowerBall>();
             TryBet.Player = Player;
             TryBet.Computer[0] = Computer;
+            if (TryBet.DoBet() == 1)
+            {
+                if (TryBet.Player.WinType == 9)
+                {
+                    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                    Winnings += 100000000;
+                    Total_Winnings.Text = Convert.ToString(Winnings);
+                }
+                else if (TryBet.Player.WinType == 8)
+                {
+                    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                    Winnings += 1000000;
+                    Total_Winnings.Text = Convert.ToString(Winnings);
+                }
+                else if (TryBet.Player.WinType == 7)
+                {
+                    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                    Winnings += 50000;
+                    Total_Winnings.Text = Convert.ToString(Winnings);
+                }
+                else if (TryBet.Player.WinType == 6 || TryBet.Player.WinType == 5)
+                {
+                    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                    Winnings += 100;
+                    Total_Winnings.Text = Convert.ToString(Winnings);
+                }
+                else if (TryBet.Player.WinType == 4 || TryBet.Player.WinType == 3)
+                {
+                    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                    Winnings += 7;
+                    Total_Winnings.Text = Convert.ToString(Winnings);
+                }
+                else if (TryBet.Player.WinType == 2 || TryBet.Player.WinType == 1)
+                {
+                    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                    Winnings += 4;
+                    Total_Winnings.Text = Convert.ToString(Winnings);
+                }
+
+                PBWin.Text = "Winner!!";
+            }
+            PBWin.Text = "Loser!!";
+            int Curr_Losses = Convert.ToInt32(Total_Losses.Text);
+            Total_Losses.Text = Convert.ToString(Curr_Losses += 1);
         }
 
     }
-
     public class Bet<T> where T : IComparable
     {
         public T Player { get; set; }
-        public T[] Computer { get; set; }
+        public T[] Computer = new T[20];
 
         public int WagerAmount { get; set; }
 
@@ -56,30 +104,23 @@ namespace BettingSim
                 return WagerAmount;
             }
 
-            T highest = Player;
-            foreach (T them in Computer)
+            T Winner = Player;
+            foreach (T other in Computer)
             {
-                if (highest.CompareTo(them) <= 0)
+                if (other != null)
                 {
-                    highest = them;
-                }
-            }
-
-            int numberOfHighest = 0;
-            if (Player.CompareTo(highest) == 0)
-            {
-                numberOfHighest++;
-                foreach (T them in Computer)
-                {
-                    if (highest.CompareTo(them) == 0)
+                    if (Winner.CompareTo(other) == -1)
                     {
-                        numberOfHighest++;
+                        Winner = other;
                     }
                 }
-
-                return (WagerAmount * Computer.Length + WagerAmount) / numberOfHighest;
             }
-            else
+
+            if (Player.CompareTo(Winner) == 0)
+            {
+                return 1;
+            }
+            else 
             {
                 return 0;
             }
@@ -90,6 +131,11 @@ namespace BettingSim
     {
         private int[] Balls;
         private int RedBall;
+        public int WinType
+        {
+            get { return WinType;}
+            private set { WinType = value; }
+        }
         public PowerBall(int[] GBalls, int RB)
         {
             Balls = GBalls;
@@ -104,24 +150,66 @@ namespace BettingSim
 
             if (this.Balls == other.Balls && this.RedBall == other.RedBall)
             {
-                return 6;
+                WinType = 9;
+                return 1;
             }
             else if (this.Balls == other.Balls)
             {
-                return 5;
+                WinType = 8;
+                return 1;
             }
-            else 
+            else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2] && this.Balls[3] == other.Balls[3] && this.RedBall == other.RedBall)
             {
-                return 0;
+                WinType = 7;
+                return 1;
             }
+            else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2] && this.Balls[3] == other.Balls[3])
+            {
+                WinType = 6;
+                return 1;
+            }
+            else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2] && this.RedBall == other.RedBall)
+            {
+                WinType = 5;
+                return 1;
+            }
+            else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2])
+            {
+                WinType = 4;
+                return 1;
+            }
+            else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.RedBall == other.RedBall)
+            {
+                WinType = 3;
+                return 1;
+            }
+            else if (this.Balls[0] == other.Balls[0] && this.RedBall == other.RedBall)
+            {
+                WinType = 2;
+                return 1;
+            }
+            else if (this.RedBall == other.RedBall)
+            {
+                WinType = 1;
+                return 1;
+            }
+
+            return -1;
         }
 
+
+        
     }
 
     class HorseRace : IComparable
     {
-        Random r = new Random();
-        int HorseSpeed;
+        private Random r = new Random();
+        private int HorseSpeed;
+        private int WinType
+        {
+            get { return WinType; }
+            set { WinType = value; }
+        }
         public HorseRace()
         {
             HorseSpeed = r.Next(1, 12);
@@ -132,11 +220,11 @@ namespace BettingSim
 
              if (this.HorseSpeed > other.HorseSpeed)
              {
-                 return 2;
+                 return 1;
              }
              else if (this.HorseSpeed < other.HorseSpeed)
              {
-                 return 1;
+                 return -1;
              }
              else
              {
@@ -148,9 +236,14 @@ namespace BettingSim
     class Poker : IComparable
     {
         
-        Random r = new Random();
-        int[] Hand = new int[5];
-        int HandValue;
+        private Random r = new Random();
+        private int[] Hand = new int[5];
+        private int HandValue;
+        private int WinType
+        {
+            get { return WinType; }
+            set { WinType = value; }
+        }
         public Poker()
         {
             for (int i = 0; i < Hand.Length; i++)
@@ -187,18 +280,75 @@ namespace BettingSim
             {
                 HandValue = 3;
 
-            } else if ()
+            } else if (TwoPair(Hand))
+            {
+                HandValue = 2;
+
+            } else if (OnePair(Hand))
+            {
+                HandValue = 1;
+            } else
+            {
+                HandValue = HighCard(Hand);
+            }
+        }
+        int HighCard(int[] H)
+        {
+            int Suits = 4;
+            int[] As = { 1, 14, 27, 40 };
+            int[] Twos = { 2, 15, 28, 41 };
+            int[] Threes = { 3, 16, 29, 42 };
+            int[] Fours = { 4, 17, 30, 43 };
+            int[] Fives = { 5, 18, 31, 44 };
+            int[] Sixes = { 6, 19, 32, 45 };
+            int[] Sevens = { 7, 20, 33, 46 };
+            int[] Eights = { 8, 21, 34, 47 };
+            int[] Nines = { 9, 22, 35, 48 };
+            int[] Tens = { 10, 23, 36, 49 };
+            int[] Js = { 11, 24, 37, 50 };
+            int[] Qs = { 12, 25, 38, 51 };
+            int[] Ks = { 13, 26, 39, 52 };
+            int[][] Deck = { Twos, Threes, Fours, Fives, Sixes, Sevens, Eights, Nines, Tens, Js, Qs, Ks, As };
+ 
+            for (int i = 0; i < Suits; i++)
+            {
+                for (int j = 0; j < 15; i++)
+                {
+                    if (H[0] == Deck[j][i])
+                    {
+                        return (-1 * j);
+                    }
+                }
+            }
+
+            return 0;
+        
+        }
+        bool OnePair(int[] H)
+        {
+            if (Count(H) == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         bool TwoPair(int[] H)
         {
-           
+            int UsedI = -1, UsedJ = -1, PairCount = 0;
             for (int i = 0; i < H.Length; i++)
             {
                 for (int j = 0; j < H.Length; j++)
                 {
-                    if(H[i] == H[j])
+                    if(H[i] == H[j] && i != UsedI && j != UsedJ)
                     {
-                        //DO Somthing
+                        PairCount++;
+                        if (PairCount == 2)
+                        {
+                            return true;
+                        }
                     }
                 }
             }
@@ -613,14 +763,12 @@ namespace BettingSim
 
             } else if (TwoCount == true) // one pair
             {
-                return 2;
+                return 1;
             }
             else
             {
                 return 0;
             }
-
-            return 0;
         }
         private void CheckCount(int Count, bool TwoCount, bool ThreeCount, bool FourCount)
         {
@@ -639,7 +787,20 @@ namespace BettingSim
         }
         public int CompareTo(object obj)
         {
-            throw new NotImplementedException();
+            Poker other = obj as Poker;
+
+            if (this.HandValue == other.HandValue)
+            {
+                return 0;
+
+            } else if (this.HandValue > other.HandValue)
+            {
+                return 1;
+
+            } else // this.HandValue < other.HandValue
+            {
+                return -1;
+            }
         }
     }
 
