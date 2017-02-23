@@ -85,6 +85,546 @@ namespace BettingSim
             Total_Losses.Text = Convert.ToString(Curr_Losses += 1);
         }
 
+        private void HorseCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HorseCheckBox1.Checked)
+            {
+                HorseCheckBox2.Enabled = false;
+                HorseCheckBox3.Enabled = false;
+                HorseCheckBox4.Enabled = false;
+                HorseCheckBox5.Enabled = false;
+                Horse_Play_Button.Enabled = true;
+            }
+            else if (!HorseCheckBox1.Checked)
+            {
+                HorseCheckBox2.Enabled = true;
+                HorseCheckBox3.Enabled = true;
+                HorseCheckBox4.Enabled = true;
+                HorseCheckBox5.Enabled = true;
+                Horse_Play_Button.Enabled = false;
+            }
+        }
+
+        private void Horse_Play_Button_Click(object sender, EventArgs e)
+        {
+            Winning_Horse.Text = "";
+            HorseWin.Text = "";
+            Random r = new Random();
+            bool DNE = false;
+            int Horse1Speed = r.Next(1, 100);
+            int Horse2Speed = r.Next(1, 100);
+            int Horse3Speed = r.Next(1, 100);
+            int Horse4Speed = r.Next(1, 100);
+            int Horse5Speed = r.Next(1, 100);
+            HorseRace Player = new HorseRace(0);
+            HorseRace Com1 = new HorseRace(0);
+            HorseRace Com2 = new HorseRace(0);
+            HorseRace Com3 = new HorseRace(0);
+            HorseRace Com4 = new HorseRace(0);
+
+            if (HorseCheckBox1.Enabled)
+            {
+                Player = new HorseRace(Horse1Speed);
+                Com1 = new HorseRace(Horse2Speed);
+                Com2 = new HorseRace(Horse3Speed);
+                Com3 = new HorseRace(Horse4Speed);
+                Com4 = new HorseRace(Horse5Speed);
+            }
+            else if (HorseCheckBox2.Enabled)
+            {
+                Player = new HorseRace(Horse2Speed);
+                Com1 = new HorseRace(Horse1Speed);
+                Com2 = new HorseRace(Horse3Speed);
+                Com3 = new HorseRace(Horse4Speed);
+                Com4 = new HorseRace(Horse5Speed);
+            }
+            else if (HorseCheckBox3.Enabled)
+            {
+                Player = new HorseRace(Horse3Speed);
+                Com1 = new HorseRace(Horse1Speed);
+                Com2 = new HorseRace(Horse2Speed);
+                Com3 = new HorseRace(Horse4Speed);
+                Com4 = new HorseRace(Horse5Speed);
+            } else if (HorseCheckBox4.Enabled)
+            {
+                Player = new HorseRace(Horse4Speed);
+                Com1 = new HorseRace(Horse1Speed);
+                Com2 = new HorseRace(Horse2Speed);
+                Com3 = new HorseRace(Horse3Speed);
+                Com4 = new HorseRace(Horse5Speed);
+            }
+            else 
+            {
+                Player = new HorseRace(Horse5Speed);
+                Com1 = new HorseRace(Horse1Speed);
+                Com2 = new HorseRace(Horse2Speed);
+                Com3 = new HorseRace(Horse3Speed);
+                Com4 = new HorseRace(Horse4Speed);
+            }
+            
+            Bet<HorseRace> TryBet = new Bet<HorseRace>();
+            TryBet.Player = Player;
+            TryBet.Computer[0] = Com1;
+            TryBet.Computer[1] = Com2;
+            TryBet.Computer[2] = Com3;
+            TryBet.Computer[3] = Com4;
+
+
+            if (TryBet.DoBet() == 1)
+            {
+                HorseWin.Text = "Winner!!";
+
+                if (HorseCheckBox1.Enabled)
+                {
+                    Winning_Horse.Text = "Horse 1";
+                }
+                else if (HorseCheckBox2.Enabled)
+                {
+                    Winning_Horse.Text = "Horse 2";
+                }
+                else if (HorseCheckBox3.Enabled)
+                {
+                    Winning_Horse.Text = "Horse 3";
+                }
+                else if (HorseCheckBox4.Enabled)
+                {
+                    Winning_Horse.Text = "Horse 4";
+                }
+                else if (HorseCheckBox5.Enabled)
+                {
+                    Winning_Horse.Text = "Horse 5";
+                }
+            }
+            else
+            {
+                int High = -1;
+                for (int i = 0; i < 20; i++)
+                {
+                    for (int j = 0; j < 20; j++)
+                    {
+                        if (TryBet.Computer[i] != null && TryBet.Computer[j] != null)
+                        {
+                            if (TryBet.Computer[i].HorseSpeed > TryBet.Computer[j].HorseSpeed)
+                            {
+                                High = i;
+                            }
+                        }
+                    }
+                }
+
+                if(HorseCheckBox1.Enabled)
+                {
+                    HorseWin.Text = "Losser!!";
+                    if(High == 0)
+                    {
+                        Winning_Horse.Text = "Horse 2";
+                    }
+                    else if (High == 1)
+                    {
+                        Winning_Horse.Text = "Horse 3";
+                    }
+                    else if (High == 2)
+                    {
+                        Winning_Horse.Text = "Horse 4";
+                    }
+                    else if (High == 3)
+                    {
+                        Winning_Horse.Text = "Horse 5";
+                    }
+                }
+                if (HorseCheckBox2.Enabled)
+                {
+                    HorseWin.Text = "Losser!!";
+                    if (High == 0)
+                    {
+                        Winning_Horse.Text = "Horse 1";
+                    }
+                    else if (High == 1)
+                    {
+                        Winning_Horse.Text = "Horse 3";
+                    }
+                    else if (High == 2)
+                    {
+                        Winning_Horse.Text = "Horse 4";
+                    }
+                    else if (High == 3)
+                    {
+                        Winning_Horse.Text = "Horse 5";
+                    }
+                }
+                if (HorseCheckBox3.Enabled)
+                {
+                    HorseWin.Text = "Losser!!";
+                    if (High == 0)
+                    {
+                        Winning_Horse.Text = "Horse 1";
+                    }
+                    else if (High == 1)
+                    {
+                        Winning_Horse.Text = "Horse 2";
+                    }
+                    else if (High == 2)
+                    {
+                        Winning_Horse.Text = "Horse 4";
+                    }
+                    else if (High == 3)
+                    {
+                        Winning_Horse.Text = "Horse 5";
+                    }
+                }
+                if (HorseCheckBox4.Enabled)
+                {
+                    HorseWin.Text = "Losser!!";
+                    if (High == 0)
+                    {
+                        Winning_Horse.Text = "Horse 1";
+                    }
+                    else if (High == 1)
+                    {
+                        Winning_Horse.Text = "Horse 2";
+                    }
+                    else if (High == 2)
+                    {
+                        Winning_Horse.Text = "Horse 3";
+                    }
+                    else if (High == 3)
+                    {
+                        Winning_Horse.Text = "Horse 5";
+                    }
+                }
+                if (HorseCheckBox5.Enabled)
+                {
+                    HorseWin.Text = "Losser!!";
+                    if (High == 0)
+                    {
+                        Winning_Horse.Text = "Horse 1";
+                    }
+                    else if (High == 1)
+                    {
+                        Winning_Horse.Text = "Horse 2";
+                    }
+                    else if (High == 2)
+                    {
+                        Winning_Horse.Text = "Horse 3";
+                    }
+                    else if (High == 3)
+                    {
+                        Winning_Horse.Text = "Horse 4";
+                    }
+                }
+               
+            }
+
+
+
+
+            if (DNE)
+            {
+                if (HorseCheckBox1.Checked)
+                {
+                    Winning_Horse.Text = "Horse 1";
+                    HorseWin.Text = "Winner!!";
+                }
+                else if (HorseCheckBox2.Checked)
+                {
+                    Winning_Horse.Text = "Horse 2";
+                    HorseWin.Text = "Winner!!";
+                }
+                else if (HorseCheckBox3.Checked)
+                {
+                    Winning_Horse.Text = "Horse 3";
+                    HorseWin.Text = "Winner!!";
+                }
+                else if (HorseCheckBox4.Checked)
+                {
+                    Winning_Horse.Text = "Horse 4";
+                    HorseWin.Text = "Winner!!";
+                }
+                else if (HorseCheckBox5.Checked)
+                {
+                    Winning_Horse.Text = "Horse 5";
+                    HorseWin.Text = "Winner!!";
+                }
+            }
+            else
+            {
+                if (DNE)
+                {
+                    
+                }
+               
+           
+            }
+
+
+        }
+
+        private void HorseCheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HorseCheckBox2.Checked)
+            {
+                HorseCheckBox1.Enabled = false;
+                HorseCheckBox3.Enabled = false;
+                HorseCheckBox4.Enabled = false;
+                HorseCheckBox5.Enabled = false;
+                Horse_Play_Button.Enabled = true;
+            }
+            else if (!HorseCheckBox2.Checked)
+            {
+                HorseCheckBox1.Enabled = true;
+                HorseCheckBox3.Enabled = true;
+                HorseCheckBox4.Enabled = true;
+                HorseCheckBox5.Enabled = true;
+                Horse_Play_Button.Enabled = false;
+            }
+        }
+
+        private void HorseCheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HorseCheckBox3.Checked)
+            {
+                HorseCheckBox1.Enabled = false;
+                HorseCheckBox2.Enabled = false;
+                HorseCheckBox4.Enabled = false;
+                HorseCheckBox5.Enabled = false;
+                Horse_Play_Button.Enabled = true;
+            }
+            else if (!HorseCheckBox3.Checked)
+            {
+                HorseCheckBox1.Enabled = true;
+                HorseCheckBox2.Enabled = true;
+                HorseCheckBox4.Enabled = true;
+                HorseCheckBox5.Enabled = true;
+                Horse_Play_Button.Enabled = false;
+            }
+        }
+
+        private void HorseCheckBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HorseCheckBox4.Checked)
+            {
+                HorseCheckBox1.Enabled = false;
+                HorseCheckBox2.Enabled = false;
+                HorseCheckBox3.Enabled = false;
+                HorseCheckBox5.Enabled = false;
+                Horse_Play_Button.Enabled = true;
+            }
+            else if (!HorseCheckBox4.Checked)
+            {
+                HorseCheckBox1.Enabled = true;
+                HorseCheckBox2.Enabled = true;
+                HorseCheckBox3.Enabled = true;
+                HorseCheckBox5.Enabled = true;
+                Horse_Play_Button.Enabled = false;
+            }
+        }
+
+        private void HorseCheckBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HorseCheckBox5.Checked)
+            {
+                HorseCheckBox1.Enabled = false;
+                HorseCheckBox2.Enabled = false;
+                HorseCheckBox4.Enabled = false;
+                HorseCheckBox3.Enabled = false;
+                Horse_Play_Button.Enabled = true;
+            }
+            else if (!HorseCheckBox5.Checked)
+            {
+                HorseCheckBox1.Enabled = true;
+                HorseCheckBox2.Enabled = true;
+                HorseCheckBox4.Enabled = true;
+                HorseCheckBox3.Enabled = true;
+                Horse_Play_Button.Enabled = false;
+            }
+        }
+
+        private void Poker_Deal_Button_Click(object sender, EventArgs e)
+        {
+            Random r = new Random();
+
+            int[] As = { 1, 14, 27, 40 };
+            int[] Twos = { 2, 15, 28, 41 };
+            int[] Threes = { 3, 16, 29, 42 };
+            int[] Fours = { 4, 17, 30, 43 };
+            int[] Fives = { 5, 18, 31, 44 };
+            int[] Sixes = { 6, 19, 32, 45 };
+            int[] Sevens = { 7, 20, 33, 46 };
+            int[] Eights = { 8, 21, 34, 47 };
+            int[] Nines = { 9, 22, 35, 48 };
+            int[] Tens = { 10, 23, 36, 49 };
+            int[] Js = { 11, 24, 37, 50 };
+            int[] Qs = { 12, 25, 38, 51 };
+            int[] Ks = { 13, 26, 39, 52 };
+
+            int[] Player_Hand = new int[5];
+            int[] Com_Hand = new int[5];
+            Player_Hand[0] = r.Next(1, 53);
+            Player_Hand[1] = r.Next(1, 53);
+            Player_Hand[2] = r.Next(1, 53);
+            Player_Hand[3] = r.Next(1, 53);
+            Player_Hand[4] = r.Next(1, 53);
+
+            Com_Hand[0] = r.Next(1, 53);
+            Com_Hand[1] = r.Next(1, 53);
+            Com_Hand[2] = r.Next(1, 53);
+            Com_Hand[3] = r.Next(1, 53);
+            Com_Hand[4] = r.Next(1, 53);
+            string[] Hand_A = new string[5];
+            string[] Hand_B = new string[5];
+            Poker Player = new Poker(Player_Hand);
+            Poker Com = new Poker(Com_Hand);
+            Bet<Poker> TryBet = new Bet<Poker>();
+
+            TryBet.Player = Player;
+            TryBet.Computer[0] = Com;
+            for(int i = 0; i < 5; i++)
+            {
+                for (int suit = 0; suit < 4; suit++)
+                {
+                    if (TryBet.Player.Hand[i] == As[suit])
+                    {
+                        Hand_A[i] = "Ace";
+                    }
+                    if (TryBet.Player.Hand[i] == Twos[suit])
+                    {
+                        Hand_A[i] = "Two";
+                    }
+                    if (TryBet.Player.Hand[i] == Threes[suit])
+                    {
+                        Hand_A[i] = "Three";
+                    }
+                    if (TryBet.Player.Hand[i] == Fours[suit])
+                    {
+                        Hand_A[i] = "Four";
+                    }
+                    if (TryBet.Player.Hand[i] == Fives[suit])
+                    {
+                        Hand_A[i] = "Five";
+                    }
+                    if (TryBet.Player.Hand[i] == Sixes[suit])
+                    {
+                        Hand_A[i] = "Six";
+                    }
+                    if (TryBet.Player.Hand[i] == Sevens[suit])
+                    {
+                        Hand_A[i] = "Ace";
+                    }
+                    if (TryBet.Player.Hand[i] == Eights[suit])
+                    {
+                        Hand_A[i] = "Eight";
+                    }
+                    if (TryBet.Player.Hand[i] == Nines[suit])
+                    {
+                        Hand_A[i] = "Nine";
+                    }
+                    if (TryBet.Player.Hand[i] == Tens[suit])
+                    {
+                        Hand_A[i] = "Ten";
+                    }
+                    if (TryBet.Player.Hand[i] == Js[suit])
+                    {
+                        Hand_A[i] = "Jack";
+                    }
+                    if (TryBet.Player.Hand[i] == Qs[suit])
+                    {
+                        Hand_A[i] = "Queen";
+                    }
+                    if (TryBet.Player.Hand[i] == Ks[suit])
+                    {
+                        Hand_A[i] = "King";
+                    }
+                }
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                for (int suit = 0; suit < 4; suit++)
+                {
+                    if (TryBet.Computer[0].Hand[i] == As[suit])
+                    {
+                        Hand_B[i] = "Ace";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Twos[suit])
+                    {
+                        Hand_B[i] = "Two";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Threes[suit])
+                    {
+                        Hand_B[i] = "Three";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Fours[suit])
+                    {
+                        Hand_B[i] = "Four";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Fives[suit])
+                    {
+                        Hand_B[i] = "Five";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Sixes[suit])
+                    {
+                        Hand_B[i] = "Six";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Sevens[suit])
+                    {
+                        Hand_B[i] = "Ace";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Eights[suit])
+                    {
+                        Hand_B[i] = "Eight";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Nines[suit])
+                    {
+                        Hand_B[i] = "Nine";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Tens[suit])
+                    {
+                        Hand_B[i] = "Ten";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Js[suit])
+                    {
+                        Hand_B[i] = "Jack";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Qs[suit])
+                    {
+                        Hand_B[i] = "Queen";
+                    }
+                    if (TryBet.Computer[0].Hand[i] == Ks[suit])
+                    {
+                        Hand_B[i] = "King";
+                    }
+                }
+            }
+
+           //PHCard1.Text = "" + TryBet.Player.Hand[0];
+           //OHCard1.Text = "" + TryBet.Computer[0].Hand[0];
+
+           
+           PHCard1.Text = Hand_A[0];
+           PHCard2.Text = Hand_A[1];
+           PHCard3.Text = Hand_A[2];
+           PHCard4.Text = Hand_A[3];
+           PHCard5.Text = Hand_A[4];
+
+           OHCard1.Text = Hand_B[0];
+           OHCard2.Text = Hand_B[1];
+           OHCard3.Text = Hand_B[2];
+           OHCard4.Text = Hand_B[3];
+           OHCard5.Text = Hand_B[4];
+           if( TryBet.DoBet() == 1)
+           {
+               PokerWin.Text = "Winner!!";
+           }
+            else if ( TryBet.DoBet() == -1)
+           {
+               PokerWin.Text = "Loser!!";
+           }
+           else if (TryBet.DoBet() == 0)
+           {
+               PokerWin.Text = "Tie!!";
+           }
+        }
+
     }
     public class Bet<T> where T : IComparable
     {
@@ -203,16 +743,16 @@ namespace BettingSim
 
     class HorseRace : IComparable
     {
-        private Random r = new Random();
-        private int HorseSpeed;
-        private int WinType
+        
+        public int HorseSpeed;
+        public int WinType
         {
             get { return WinType; }
             set { WinType = value; }
         }
-        public HorseRace()
+        public HorseRace(int R)
         {
-            HorseSpeed = r.Next(1, 12);
+            HorseSpeed = R;
         }
          public int CompareTo(object obj)
          {
@@ -235,21 +775,23 @@ namespace BettingSim
 
     class Poker : IComparable
     {
-        
         private Random r = new Random();
-        private int[] Hand = new int[5];
+        public int[] Hand = new int[5];
         private int HandValue;
         private int WinType
         {
             get { return WinType; }
             set { WinType = value; }
         }
-        public Poker()
+        public Poker(int[] H)
         {
-            for (int i = 0; i < Hand.Length; i++)
-            {
-                Hand[i] = r.Next(1, 53);
-            }
+            Hand[0] = H[0];
+            Hand[1] = H[1];
+            Hand[2] = H[2];
+            Hand[3] = H[3];
+            Hand[4] = H[4];
+            
+
             Array.Sort(Hand);
             //Royal Flush
             if (((Hand[0] == 1) && (Hand[0] == 13) && (Hand[0] == 12) && (Hand[0] == 11) && (Hand[0] == 10)) || ((Hand[0] == 14) && (Hand[0] == 26) && (Hand[0] == 25) && (Hand[0] == 24) && (Hand[0] == 23)) || ((Hand[0] == 27) && (Hand[0] == 39) && (Hand[0] == 38) && (Hand[0] == 37) && (Hand[0] == 36)) || ((Hand[0] == 40) && (Hand[0] == 52) && (Hand[0] == 51) && (Hand[0] == 50) && (Hand[0] == 49)))
@@ -424,9 +966,9 @@ namespace BettingSim
 
             for(int card = 0; card < H.Length; card++)
             {
-                for (int suit = 0; suit <= 3; suit++)
+                for (int suit = 0; suit < 3; suit++)
                 {
-                    for (int D_card = 0; D_card <=13; D_card++)
+                    for (int D_card = 0; D_card < 13; D_card++)
                     {
                         if(H[card] == Deck[suit][D_card])
                         {

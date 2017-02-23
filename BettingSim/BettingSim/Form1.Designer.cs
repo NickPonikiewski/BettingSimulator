@@ -41,7 +41,6 @@
             this.Total_Losses = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.Horse_List = new System.Windows.Forms.ListBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Horse_Play_Button = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
@@ -71,6 +70,11 @@
             this.PBWin = new System.Windows.Forms.Label();
             this.HorseWin = new System.Windows.Forms.Label();
             this.PokerWin = new System.Windows.Forms.Label();
+            this.HorseCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.HorseCheckBox2 = new System.Windows.Forms.CheckBox();
+            this.HorseCheckBox3 = new System.Windows.Forms.CheckBox();
+            this.HorseCheckBox4 = new System.Windows.Forms.CheckBox();
+            this.HorseCheckBox5 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Ball1numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ball2numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ball3numericUpDown)).BeginInit();
@@ -191,24 +195,16 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(147, 188);
+            this.label12.Location = new System.Drawing.Point(90, 188);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(64, 13);
             this.label12.TabIndex = 18;
             this.label12.Text = "Horse Race";
             // 
-            // Horse_List
-            // 
-            this.Horse_List.FormattingEnabled = true;
-            this.Horse_List.Location = new System.Drawing.Point(15, 214);
-            this.Horse_List.Name = "Horse_List";
-            this.Horse_List.Size = new System.Drawing.Size(120, 95);
-            this.Horse_List.TabIndex = 19;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(15, 198);
+            this.label13.Location = new System.Drawing.Point(8, 188);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(40, 13);
             this.label13.TabIndex = 20;
@@ -216,17 +212,18 @@
             // 
             // Horse_Play_Button
             // 
-            this.Horse_Play_Button.Location = new System.Drawing.Point(141, 286);
+            this.Horse_Play_Button.Location = new System.Drawing.Point(84, 286);
             this.Horse_Play_Button.Name = "Horse_Play_Button";
             this.Horse_Play_Button.Size = new System.Drawing.Size(75, 23);
             this.Horse_Play_Button.TabIndex = 21;
             this.Horse_Play_Button.Text = "Play";
             this.Horse_Play_Button.UseVisualStyleBackColor = true;
+            this.Horse_Play_Button.Click += new System.EventHandler(this.Horse_Play_Button_Click);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(150, 214);
+            this.label14.Location = new System.Drawing.Point(93, 214);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 13);
             this.label14.TabIndex = 22;
@@ -235,7 +232,7 @@
             // Winning_Horse
             // 
             this.Winning_Horse.AutoSize = true;
-            this.Winning_Horse.Location = new System.Drawing.Point(200, 214);
+            this.Winning_Horse.Location = new System.Drawing.Point(143, 214);
             this.Winning_Horse.Name = "Winning_Horse";
             this.Winning_Horse.Size = new System.Drawing.Size(0, 13);
             this.Winning_Horse.TabIndex = 23;
@@ -365,6 +362,7 @@
             this.Poker_Deal_Button.TabIndex = 39;
             this.Poker_Deal_Button.Text = "Deal";
             this.Poker_Deal_Button.UseVisualStyleBackColor = true;
+            this.Poker_Deal_Button.Click += new System.EventHandler(this.Poker_Deal_Button_Click);
             // 
             // label31
             // 
@@ -467,7 +465,7 @@
             // HorseWin
             // 
             this.HorseWin.AutoSize = true;
-            this.HorseWin.Location = new System.Drawing.Point(150, 246);
+            this.HorseWin.Location = new System.Drawing.Point(93, 246);
             this.HorseWin.Name = "HorseWin";
             this.HorseWin.Size = new System.Drawing.Size(0, 13);
             this.HorseWin.TabIndex = 49;
@@ -477,15 +475,74 @@
             this.PokerWin.AutoSize = true;
             this.PokerWin.Location = new System.Drawing.Point(358, 125);
             this.PokerWin.Name = "PokerWin";
-            this.PokerWin.Size = new System.Drawing.Size(35, 13);
+            this.PokerWin.Size = new System.Drawing.Size(0, 13);
             this.PokerWin.TabIndex = 50;
-            this.PokerWin.Text = "label3";
+            // 
+            // HorseCheckBox1
+            // 
+            this.HorseCheckBox1.AutoSize = true;
+            this.HorseCheckBox1.Location = new System.Drawing.Point(5, 204);
+            this.HorseCheckBox1.Name = "HorseCheckBox1";
+            this.HorseCheckBox1.Size = new System.Drawing.Size(63, 17);
+            this.HorseCheckBox1.TabIndex = 51;
+            this.HorseCheckBox1.Text = "Horse 1";
+            this.HorseCheckBox1.UseVisualStyleBackColor = true;
+            this.HorseCheckBox1.CheckedChanged += new System.EventHandler(this.HorseCheckBox1_CheckedChanged);
+            // 
+            // HorseCheckBox2
+            // 
+            this.HorseCheckBox2.AutoSize = true;
+            this.HorseCheckBox2.Location = new System.Drawing.Point(5, 227);
+            this.HorseCheckBox2.Name = "HorseCheckBox2";
+            this.HorseCheckBox2.Size = new System.Drawing.Size(63, 17);
+            this.HorseCheckBox2.TabIndex = 52;
+            this.HorseCheckBox2.Text = "Horse 2";
+            this.HorseCheckBox2.UseVisualStyleBackColor = true;
+            this.HorseCheckBox2.CheckedChanged += new System.EventHandler(this.HorseCheckBox2_CheckedChanged);
+            // 
+            // HorseCheckBox3
+            // 
+            this.HorseCheckBox3.AutoSize = true;
+            this.HorseCheckBox3.Location = new System.Drawing.Point(5, 250);
+            this.HorseCheckBox3.Name = "HorseCheckBox3";
+            this.HorseCheckBox3.Size = new System.Drawing.Size(63, 17);
+            this.HorseCheckBox3.TabIndex = 53;
+            this.HorseCheckBox3.Text = "Horse 3";
+            this.HorseCheckBox3.UseVisualStyleBackColor = true;
+            this.HorseCheckBox3.CheckedChanged += new System.EventHandler(this.HorseCheckBox3_CheckedChanged);
+            // 
+            // HorseCheckBox4
+            // 
+            this.HorseCheckBox4.AutoSize = true;
+            this.HorseCheckBox4.Location = new System.Drawing.Point(5, 273);
+            this.HorseCheckBox4.Name = "HorseCheckBox4";
+            this.HorseCheckBox4.Size = new System.Drawing.Size(63, 17);
+            this.HorseCheckBox4.TabIndex = 54;
+            this.HorseCheckBox4.Text = "Horse 4";
+            this.HorseCheckBox4.UseVisualStyleBackColor = true;
+            this.HorseCheckBox4.CheckedChanged += new System.EventHandler(this.HorseCheckBox4_CheckedChanged);
+            // 
+            // HorseCheckBox5
+            // 
+            this.HorseCheckBox5.AutoSize = true;
+            this.HorseCheckBox5.Location = new System.Drawing.Point(5, 296);
+            this.HorseCheckBox5.Name = "HorseCheckBox5";
+            this.HorseCheckBox5.Size = new System.Drawing.Size(63, 17);
+            this.HorseCheckBox5.TabIndex = 55;
+            this.HorseCheckBox5.Text = "Horse 5";
+            this.HorseCheckBox5.UseVisualStyleBackColor = true;
+            this.HorseCheckBox5.CheckedChanged += new System.EventHandler(this.HorseCheckBox5_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 323);
+            this.ClientSize = new System.Drawing.Size(673, 323);
+            this.Controls.Add(this.HorseCheckBox5);
+            this.Controls.Add(this.HorseCheckBox4);
+            this.Controls.Add(this.HorseCheckBox3);
+            this.Controls.Add(this.HorseCheckBox2);
+            this.Controls.Add(this.HorseCheckBox1);
             this.Controls.Add(this.PokerWin);
             this.Controls.Add(this.HorseWin);
             this.Controls.Add(this.PBWin);
@@ -515,7 +572,6 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.Horse_Play_Button);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.Horse_List);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.Total_Losses);
@@ -557,7 +613,6 @@
         private System.Windows.Forms.Label Total_Losses;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ListBox Horse_List;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button Horse_Play_Button;
         private System.Windows.Forms.Label label14;
@@ -587,6 +642,11 @@
         private System.Windows.Forms.Label PBWin;
         private System.Windows.Forms.Label HorseWin;
         private System.Windows.Forms.Label PokerWin;
+        private System.Windows.Forms.CheckBox HorseCheckBox1;
+        private System.Windows.Forms.CheckBox HorseCheckBox2;
+        private System.Windows.Forms.CheckBox HorseCheckBox3;
+        private System.Windows.Forms.CheckBox HorseCheckBox4;
+        private System.Windows.Forms.CheckBox HorseCheckBox5;
     }
 }
 
