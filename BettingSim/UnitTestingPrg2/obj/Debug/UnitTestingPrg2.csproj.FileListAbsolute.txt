@@ -1,0 +1,7 @@
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\UnitTestingPrg2\bin\Debug\UnitTestingPrg2.dll
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\UnitTestingPrg2\bin\Debug\UnitTestingPrg2.pdb
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\UnitTestingPrg2\bin\Debug\BettingSim.exe
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\UnitTestingPrg2\bin\Debug\BettingSim.pdb
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\UnitTestingPrg2\obj\Debug\UnitTestingPrg2.csprojResolveAssemblyReference.cache
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\UnitTestingPrg2\obj\Debug\UnitTestingPrg2.dll
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\UnitTestingPrg2\obj\Debug\UnitTestingPrg2.pdb

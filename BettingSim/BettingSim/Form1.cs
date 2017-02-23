@@ -667,7 +667,7 @@ namespace BettingSim
         }
     }
 
-    class PowerBall : IComparable
+    public class PowerBall : IComparable
     {
         private int[] Balls;
         private int RedBall;
@@ -741,7 +741,7 @@ namespace BettingSim
         
     }
 
-    class HorseRace : IComparable
+    public class HorseRace : IComparable
     {
         
         public int HorseSpeed;
@@ -773,7 +773,7 @@ namespace BettingSim
          }
     }
 
-    class Poker : IComparable
+    public class Poker : IComparable
     {
         private Random r = new Random();
         public int[] Hand = new int[5];
