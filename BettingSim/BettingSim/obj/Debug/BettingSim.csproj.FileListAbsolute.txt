@@ -6,3 +6,4 @@ C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\D
 C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\Debug\BettingSim.csproj.GenerateResource.Cache
 C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\Debug\BettingSim.exe
 C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\Debug\BettingSim.pdb
+C:\Users\the_p_000\Documents\GitHub\BettingSimulator\BettingSim\BettingSim\obj\Debug\BettingSim.csprojResolveAssemblyReference.cache

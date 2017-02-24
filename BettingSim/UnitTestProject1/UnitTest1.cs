@@ -45,14 +45,14 @@ namespace UnitTestProject1
             TryBet.Player = Player;
             TryBet.Computer[0] = Com;
 
-            Assert.AreEqual(-1, TryBet.DoBet());
+            Assert.AreEqual(0, TryBet.DoBet());
         }
 
         [TestMethod]
         public void TestPoker()
         {
-            int[] Player_Hand = { 1, 14, 27, 40 };
-            int[] Com_Hand = { 2, 15, 28, 41 };
+            int[] Player_Hand = { 1, 14, 27, 40, 52};
+            int[] Com_Hand = { 2, 15, 28, 41, 5};
             Poker Player = new Poker(Player_Hand);
             Poker Com = new Poker(Com_Hand);
             Bet<Poker> TryBet = new Bet<Poker>();

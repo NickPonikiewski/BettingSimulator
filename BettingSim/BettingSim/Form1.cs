@@ -692,8 +692,7 @@ namespace BettingSim
         private int RedBall;
         public int WinType
         {
-            get { return WinType;}
-            private set { WinType = value; }
+            get; private set;
         }
         public PowerBall(int[] GBalls, int RB)
         {
@@ -710,47 +709,47 @@ namespace BettingSim
             if (this.Balls == other.Balls && this.RedBall == other.RedBall)
             {
                 WinType = 9;
-                return 1;
+                return 0;
             }
             else if (this.Balls == other.Balls)
             {
                 WinType = 8;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2] && this.Balls[3] == other.Balls[3] && this.RedBall == other.RedBall)
             {
                 WinType = 7;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2] && this.Balls[3] == other.Balls[3])
             {
                 WinType = 6;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2] && this.RedBall == other.RedBall)
             {
                 WinType = 5;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2])
             {
                 WinType = 4;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.RedBall == other.RedBall)
             {
                 WinType = 3;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.RedBall == other.RedBall)
             {
                 WinType = 2;
-                return 1;
+                return 0;
             }
             else if (this.RedBall == other.RedBall)
             {
                 WinType = 1;
-                return 1;
+                return 0;
             }
 
             return -1;
