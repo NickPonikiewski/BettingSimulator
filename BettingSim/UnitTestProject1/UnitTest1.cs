@@ -27,5 +27,40 @@ namespace UnitTestProject1
 
             Assert.AreEqual(1, TryBet.DoBet());
         }
+
+        [TestMethod]
+        public void TestHorseRace()
+        {
+            HorseRace Player = new HorseRace(6);
+            HorseRace Com = new HorseRace(5);
+            Bet<HorseRace> TryBet = new Bet<HorseRace>();
+            TryBet.Player = Player;
+            TryBet.Computer[0] = Com;
+
+            Assert.AreEqual(1, TryBet.DoBet());
+
+            Player = new HorseRace(5);
+            Com = new HorseRace(6);
+            TryBet = new Bet<HorseRace>();
+            TryBet.Player = Player;
+            TryBet.Computer[0] = Com;
+
+            Assert.AreEqual(0, TryBet.DoBet());
+        }
+
+        [TestMethod]
+        public void TestPoker()
+        {
+            int[] Player_Hand = { 1, 14, 27, 40, 52};
+            int[] Com_Hand = { 2, 15, 28, 41, 5};
+            Poker Player = new Poker(Player_Hand);
+            Poker Com = new Poker(Com_Hand);
+            Bet<Poker> TryBet = new Bet<Poker>();
+
+            TryBet.Player = Player;
+            TryBet.Computer[0] = Com;
+
+            Assert.AreEqual(1, TryBet.DoBet());
+        }
     }
 }

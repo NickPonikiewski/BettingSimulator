@@ -25,7 +25,7 @@ namespace BettingSim
             int PlayerRedBall = (int)Ball6numericUpDown.Value;
             int[] ActualBaseBalls = { random.Next(1, 70), random.Next(1, 70), random.Next(1, 70), random.Next(1, 70), random.Next(1, 70), random.Next(1, 70) };
             int ActualRedBall = random.Next(1, 27);
-            int Winnings = 0;
+            
             
             Ball1.Text = Convert.ToString(ActualBaseBalls[0]);
             Ball2.Text = Convert.ToString(ActualBaseBalls[1]);
@@ -41,42 +41,42 @@ namespace BettingSim
             TryBet.Computer[0] = Computer;
             if (TryBet.DoBet() == 1)
             {
-                if (TryBet.Player.WinType == 9)
-                {
-                    Winnings = Convert.ToInt32(Total_Winnings.Text);
-                    Winnings += 100000000;
-                    Total_Winnings.Text = Convert.ToString(Winnings);
-                }
-                else if (TryBet.Player.WinType == 8)
-                {
-                    Winnings = Convert.ToInt32(Total_Winnings.Text);
-                    Winnings += 1000000;
-                    Total_Winnings.Text = Convert.ToString(Winnings);
-                }
-                else if (TryBet.Player.WinType == 7)
-                {
-                    Winnings = Convert.ToInt32(Total_Winnings.Text);
-                    Winnings += 50000;
-                    Total_Winnings.Text = Convert.ToString(Winnings);
-                }
-                else if (TryBet.Player.WinType == 6 || TryBet.Player.WinType == 5)
-                {
-                    Winnings = Convert.ToInt32(Total_Winnings.Text);
-                    Winnings += 100;
-                    Total_Winnings.Text = Convert.ToString(Winnings);
-                }
-                else if (TryBet.Player.WinType == 4 || TryBet.Player.WinType == 3)
-                {
-                    Winnings = Convert.ToInt32(Total_Winnings.Text);
-                    Winnings += 7;
-                    Total_Winnings.Text = Convert.ToString(Winnings);
-                }
-                else if (TryBet.Player.WinType == 2 || TryBet.Player.WinType == 1)
-                {
-                    Winnings = Convert.ToInt32(Total_Winnings.Text);
-                    Winnings += 4;
-                    Total_Winnings.Text = Convert.ToString(Winnings);
-                }
+                //if (TryBet.Player.WinType == 9)
+                //{
+                //    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                //    Winnings += 100000000;
+                //    Total_Winnings.Text = Convert.ToString(Winnings);
+                //}
+                //else if (TryBet.Player.WinType == 8)
+                //{
+                //    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                //    Winnings += 1000000;
+                //    Total_Winnings.Text = Convert.ToString(Winnings);
+                //}
+                //else if (TryBet.Player.WinType == 7)
+                //{
+                //    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                //    Winnings += 50000;
+                //    Total_Winnings.Text = Convert.ToString(Winnings);
+                //}
+                //else if (TryBet.Player.WinType == 6 || TryBet.Player.WinType == 5)
+                //{
+                //    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                //    Winnings += 100;
+                //    Total_Winnings.Text = Convert.ToString(Winnings);
+                //}
+                //else if (TryBet.Player.WinType == 4 || TryBet.Player.WinType == 3)
+                //{
+                //    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                //    Winnings += 7;
+                //    Total_Winnings.Text = Convert.ToString(Winnings);
+                //}
+                //else if (TryBet.Player.WinType == 2 || TryBet.Player.WinType == 1)
+                //{
+                //    Winnings = Convert.ToInt32(Total_Winnings.Text);
+                //    Winnings += 4;
+                //    Total_Winnings.Text = Convert.ToString(Winnings);
+                //}
 
                 PBWin.Text = "Winner!!";
             }
@@ -214,7 +214,10 @@ namespace BettingSim
 
                 if(HorseCheckBox1.Enabled)
                 {
+                    int loss = Convert.ToInt32(Total_Losses);
                     HorseWin.Text = "Losser!!";
+                    loss += 1;
+                    Total_Losses.Text = loss.ToString();
                     if(High == 0)
                     {
                         Winning_Horse.Text = "Horse 2";
@@ -234,7 +237,10 @@ namespace BettingSim
                 }
                 if (HorseCheckBox2.Enabled)
                 {
+                    int loss = Convert.ToInt32(Total_Losses);
                     HorseWin.Text = "Losser!!";
+                    loss += 1;
+                    Total_Losses.Text = loss.ToString();
                     if (High == 0)
                     {
                         Winning_Horse.Text = "Horse 1";
@@ -254,7 +260,10 @@ namespace BettingSim
                 }
                 if (HorseCheckBox3.Enabled)
                 {
+                    int loss = Convert.ToInt32(Total_Losses);
                     HorseWin.Text = "Losser!!";
+                    loss += 1;
+                    Total_Losses.Text = loss.ToString();
                     if (High == 0)
                     {
                         Winning_Horse.Text = "Horse 1";
@@ -274,7 +283,10 @@ namespace BettingSim
                 }
                 if (HorseCheckBox4.Enabled)
                 {
+                    int loss = Convert.ToInt32(Total_Losses);
                     HorseWin.Text = "Losser!!";
+                    loss += 1;
+                    Total_Losses.Text = loss.ToString();
                     if (High == 0)
                     {
                         Winning_Horse.Text = "Horse 1";
@@ -294,7 +306,10 @@ namespace BettingSim
                 }
                 if (HorseCheckBox5.Enabled)
                 {
+                    int loss = Convert.ToInt32(Total_Losses);
                     HorseWin.Text = "Losser!!";
+                    loss += 1;
+                    Total_Losses.Text = loss.ToString();
                     if (High == 0)
                     {
                         Winning_Horse.Text = "Horse 1";
@@ -618,6 +633,10 @@ namespace BettingSim
             else if ( TryBet.DoBet() == -1)
            {
                PokerWin.Text = "Loser!!";
+               int loss = Convert.ToInt32(Total_Losses);
+               HorseWin.Text = "Losser!!";
+               loss += 1;
+               Total_Losses.Text = loss.ToString();
            }
            else if (TryBet.DoBet() == 0)
            {
@@ -673,8 +692,7 @@ namespace BettingSim
         private int RedBall;
         public int WinType
         {
-            get { return WinType;}
-            private set { WinType = value; }
+            get; private set;
         }
         public PowerBall(int[] GBalls, int RB)
         {
@@ -691,47 +709,47 @@ namespace BettingSim
             if (this.Balls == other.Balls && this.RedBall == other.RedBall)
             {
                 WinType = 9;
-                return 1;
+                return 0;
             }
             else if (this.Balls == other.Balls)
             {
                 WinType = 8;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2] && this.Balls[3] == other.Balls[3] && this.RedBall == other.RedBall)
             {
                 WinType = 7;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2] && this.Balls[3] == other.Balls[3])
             {
                 WinType = 6;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2] && this.RedBall == other.RedBall)
             {
                 WinType = 5;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.Balls[2] == other.Balls[2])
             {
                 WinType = 4;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.Balls[1] == other.Balls[1] && this.RedBall == other.RedBall)
             {
                 WinType = 3;
-                return 1;
+                return 0;
             }
             else if (this.Balls[0] == other.Balls[0] && this.RedBall == other.RedBall)
             {
                 WinType = 2;
-                return 1;
+                return 0;
             }
             else if (this.RedBall == other.RedBall)
             {
                 WinType = 1;
-                return 1;
+                return 0;
             }
 
             return -1;

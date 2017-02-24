@@ -59,8 +59,6 @@
             this.PHCard2 = new System.Windows.Forms.Label();
             this.PHCard1 = new System.Windows.Forms.Label();
             this.Poker_Deal_Button = new System.Windows.Forms.Button();
-            this.label31 = new System.Windows.Forms.Label();
-            this.Total_Winnings = new System.Windows.Forms.Label();
             this.Ball1numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.Ball2numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.Ball3numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -364,24 +362,6 @@
             this.Poker_Deal_Button.UseVisualStyleBackColor = true;
             this.Poker_Deal_Button.Click += new System.EventHandler(this.Poker_Deal_Button_Click);
             // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(5, 25);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(57, 13);
-            this.label31.TabIndex = 40;
-            this.label31.Text = "Winnings: ";
-            // 
-            // Total_Winnings
-            // 
-            this.Total_Winnings.AutoSize = true;
-            this.Total_Winnings.Location = new System.Drawing.Point(68, 25);
-            this.Total_Winnings.Name = "Total_Winnings";
-            this.Total_Winnings.Size = new System.Drawing.Size(13, 13);
-            this.Total_Winnings.TabIndex = 41;
-            this.Total_Winnings.Text = "0";
-            // 
             // Ball1numericUpDown
             // 
             this.Ball1numericUpDown.Location = new System.Drawing.Point(57, 97);
@@ -552,8 +532,6 @@
             this.Controls.Add(this.Ball3numericUpDown);
             this.Controls.Add(this.Ball2numericUpDown);
             this.Controls.Add(this.Ball1numericUpDown);
-            this.Controls.Add(this.Total_Winnings);
-            this.Controls.Add(this.label31);
             this.Controls.Add(this.Poker_Deal_Button);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.PHCard5);
@@ -631,8 +609,6 @@
         private System.Windows.Forms.Label PHCard2;
         private System.Windows.Forms.Label PHCard1;
         private System.Windows.Forms.Button Poker_Deal_Button;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label Total_Winnings;
         private System.Windows.Forms.NumericUpDown Ball1numericUpDown;
         private System.Windows.Forms.NumericUpDown Ball2numericUpDown;
         private System.Windows.Forms.NumericUpDown Ball3numericUpDown;
